@@ -1,0 +1,33 @@
+{
+  "name": "tymfrontiers-cdn/php-data",
+  "description": "PHP Data manager",
+  "keywords": ["php", "data","manager","tym","frontiers"],
+  "homepage": "https://github.com/tymfrontiers-cdn/php-data",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Sir Louis",
+          "email": "me@sirlouis.io",
+          "homepage": "https://sirlouis.io",
+          "role": "developer"
+      },
+      {
+          "name": "Tym Frontiers Ltd",
+          "email": "git@tymfrontiers.com",
+          "homepage": "https://tymfrontiers.com",
+          "role": "developer"
+      }
+  ],
+  "require": {
+    "php" : ">=5.3",
+    "guzzlehttp/guzzle" : ">=6.0@stable",
+    "giggsey/libphonenumber-for-php" : ">=8.0@stable"
+  },
+  "require-dev": {},
+  "autoload": {
+      "psr-4": {
+          "TymFrontiers\\": "src/"
+      }
+  }
+}
