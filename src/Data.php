@@ -258,10 +258,10 @@ class Data{
     $dir = PRJ_ROOT . "/.system/appdata/tymfronters-cdn/php-data";
     if (!\file_exists($dir)) {
       // create directory
-      \mkdir($dir,0777,true);
+      \mkdir($dir,0766,true);
     }
 
-    $key_file = $dir.'/.data_key.php';
+    $key_file = $dir.'/data.key';
     if( !\file_exists($key_file) || !\is_readable($key_file) ){
       self::_createKey();
     }
@@ -279,12 +279,12 @@ class Data{
     $dir = PRJ_ROOT . "/.system/appdata/tymfronters-cdn/php-data";
     if (!\file_exists($dir)) {
       // create directory
-      \mkdir($dir,0777,true);
+      \mkdir($dir,0766,true);
     }
 
-    $key_file = $dir.'/.data_key.php';
-    $key =  empty($key) ? "<?php ".\base64_encode( \openssl_random_pseudo_bytes(32)) :
-                          "<?php ".$key;
+    $key_file = $dir.'/data.key';
+    $key =  empty($key) ? \base64_encode( \openssl_random_pseudo_bytes(32)) :
+                          $key;
     if( !\file_put_contents($key_file,$key) ){
       throw new \Exception("Error writing key file due to incorrect permision", 1);
     }
