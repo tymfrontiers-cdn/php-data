@@ -255,7 +255,7 @@ class Data{
     } if (!\file_exists(PRJ_ROOT) || !\is_readable(PRJ_ROOT) || !\is_writable(PRJ_ROOT)) {
       throw new \Exception("Project path: " . PRJ_ROOT . " does not exist or is not readable.", 1);
     }
-    $dir = PRJ_ROOT . "/.system/appdata/tymfronters-cdn/php-data";
+    $dir = PRJ_ROOT . "/.system/appdata/tymfrontiers-cdn/php-data";
     if (!\file_exists($dir)) {
       // create directory
       \mkdir($dir,0766,true);
@@ -276,7 +276,7 @@ class Data{
     } if (!\file_exists(PRJ_ROOT) || !\is_readable(PRJ_ROOT) || !\is_writable(PRJ_ROOT)) {
       throw new \Exception("Project path: " . PRJ_ROOT . " does not exist or is not readable.", 1);
     }
-    $dir = PRJ_ROOT . "/.system/appdata/tymfronters-cdn/php-data";
+    $dir = PRJ_ROOT . "/.system/appdata/tymfrontiers-cdn/php-data";
     if (!\file_exists($dir)) {
       // create directory
       \mkdir($dir,0766,true);
