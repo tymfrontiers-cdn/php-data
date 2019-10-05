@@ -289,5 +289,25 @@ class Data{
       throw new \Exception("Error writing key file due to incorrect permision", 1);
     }
   }
+  public static function writeOut (int $error_type, string $error_message, array $errors = [], array $more_prop_val = [], string $output_type = "json", bool $return = false) {
+    $output_array = [];
+    $output_types = ["json", "plain", "html", "xml"];
+    $output_type = \in_array($output_type, $output_types) ? $output_type : "plain";
+    if (!empty($more_prop_val)) {
+      foreach ($more_prop_val as $prop=>$val) {
+        $output_array[$prop] = $val;
+      }
+    }
+    $output_array["status"] = $error_type . "." . \count($errors);
+    $output_array["message"] = $error_message;
+    $output_array["errors"] = $errors;
+    if ($output_type == 'json') {
+      if ($return) {
+        return \json_encode ($output_array);
+      } else {
+        echo \json_encode ($output_array);
+      }
+    }
+  }
 
 }
