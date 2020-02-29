@@ -1,5 +1,5 @@
 <?php
-namespace TymFrontiers;
+namespace TymFrontiers\CDN;
 
 class Data{
   const RAND_LOWERCASE = 'lowercase';
@@ -308,6 +308,9 @@ class Data{
         echo \json_encode ($output_array);
       }
     }
+  }
+  public static function charSplit (string $char, int $len=3, string $split_str="-") {
+    return \implode($split_str, \str_split($char, $len));
   }
 
 }
