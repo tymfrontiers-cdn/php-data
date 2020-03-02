@@ -1,5 +1,5 @@
 <?php
-namespace TymFrontiers\CDN;
+namespace TymFrontiers;
 
 class Data{
   const RAND_LOWERCASE = 'lowercase';
