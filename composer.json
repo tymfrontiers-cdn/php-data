@@ -20,7 +20,6 @@
       }
   ],
   "require": {
-    "php" : ">=5.3",
     "guzzlehttp/guzzle" : ">=6.0@stable",
     "giggsey/libphonenumber-for-php" : ">=8.0@stable"
   },
