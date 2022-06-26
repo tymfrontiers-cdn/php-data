@@ -250,12 +250,13 @@ class Data{
   }
   private static function _init(){
     // check for definition of project directory
+    $data_dir = PRJ_ROOT . "/.system/appdata";
     if (!\defined('PRJ_ROOT')) {
       throw new \Exception("[PRJ_ROOT]: defined! Kindly define a constant 'PRJ_ROOT' for path to root of your project.", 256);
-    } if (!\file_exists(PRJ_ROOT) || !\is_readable(PRJ_ROOT) || !\is_writable(PRJ_ROOT)) {
-      throw new \Exception("Project path: " . PRJ_ROOT . " does not exist or is not readable.", 1);
+    } if (!\file_exists($data_dir) || !\is_readable($data_dir) || !\is_writable($data_dir)) {
+      throw new \Exception("Project path: {$data_dir} does not exist or is not readable.", 1);
     }
-    $dir = PRJ_ROOT . "/.system/appdata/tymfrontiers-cdn/php-data";
+    $dir = $data_dir . "/tymfrontiers-cdn/php-data";
     if (!\file_exists($dir)) {
       // create directory
       \mkdir($dir,0766,true);
