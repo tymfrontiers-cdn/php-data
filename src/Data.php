@@ -128,7 +128,7 @@ class Data{
   }
   public static function getLen($text='',$len=0){
     $len = (int)$len > 5 ? (int)$len : 150;
-    if( \strlen($text) > $len) {
+    if( @ \strlen($text) > $len) {
       $text = \substr($text, 0, \strpos($text, ' ', $len));
     }
     return $text.' ..';
