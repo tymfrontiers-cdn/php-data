@@ -313,5 +313,8 @@ class Data{
   public static function charSplit (string $char, int $len=3, string $split_str="-") {
     return \implode($split_str, \str_split($char, $len));
   }
+  public function encKey () { 
+    return \base64_encode( \openssl_random_pseudo_bytes(32));
+  }
 
 }
