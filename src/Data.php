@@ -131,7 +131,7 @@ class Data{
     if( @ \strlen($text) > $len) {
       $text = \substr($text, 0, \strpos($text, ' ', $len));
     }
-    return $text.' ..';
+    return $text . (\strlen($text) > $len ? ' ..' : "");
   }
   public static function restoreKey( string $key){
     if( $key ) self::_createKey($key);
