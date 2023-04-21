@@ -250,10 +250,19 @@ class Data{
   }
   private static function _init(){
     // check for definition of project directory
-    $data_dir = PRJ_ROOT . "/.system/appdata";
-    if (!\defined('PRJ_ROOT')) {
+    $prj_root = \function_exists("\Catali\get_constant")
+    ? \Catali\get_constant("PRJ_ROOT")
+    : (
+      \function_exists("\get_constant")
+      ? \get_constant("PRJ_ROOT")
+      : null
+    );
+    if (empty($prj_root) && \defined("PRJ_ROOT")) $prj_root = PRJ_ROOT;
+    if (empty($prj_root)) {
       throw new \Exception("[PRJ_ROOT]: defined! Kindly define a constant 'PRJ_ROOT' for path to root of your project.", 256);
-    } if (!\file_exists($data_dir) || !\is_readable($data_dir) || !\is_writable($data_dir)) {
+    } 
+    $data_dir = $prj_root . "/.system/appdata";
+    if (!\file_exists($data_dir) || !\is_readable($data_dir) || !\is_writable($data_dir)) {
       throw new \Exception("Project path: {$data_dir} does not exist or is not readable.", 1);
     }
     $dir = $data_dir . "/tymfrontiers-cdn/php-data";
