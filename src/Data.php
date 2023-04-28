@@ -106,7 +106,7 @@ class Data{
     return \substr($base64_str, 0,$len);
   }
   public static function genCode(int $len=5){
-    return self::uniqueRand('',$len,DATA_RAND_NUMBERS);
+    return self::uniqueRand('',$len, self::RAND_MIXED);
     // $random_number=''; // set up a blank string
     // $count=0;
     // while ( $count < $len ) {
@@ -117,7 +117,7 @@ class Data{
     // return $random_number;
   }
   public static function genAlnumeric(string $chars='',int $len=6){
-    return self::uniqueRand($chars,$len,DATA_RAND_MIXED );
+    return self::uniqueRand($chars,$len, self::RAND_MIXED );
     // $chars = ( !empty($chars) && strlen($chars) > $len ) ? $chars : $this->_rand_range;
     // $string = '';
     // $max = strlen($chars) - 1;
