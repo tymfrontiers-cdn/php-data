@@ -44,12 +44,17 @@ class Data{
     // Remove the base64 encoding from our key
     $encryption_key = empty($enc_key) ? \base64_decode(self::$_enc_key) : \base64_decode($enc_key);
     // To decrypt, split the encrypted data from our IV - our unique separator used was "::"
-    list($encrypted_data, $iv) = \explode('::', $data, 2);
-    return \openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
-    // return $string;
+    if (\count(\explode("::", $data)) == 2) {
+      list($encrypted_data, $iv) = \explode('::', $data, 2);
+      return \openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    }
+    return null;
   }
   public static function encodeEncrypt(string $data, string $enc_key='') {
-    return \base64_encode( self::encrypt($data, $enc_key) );
+    if ($decrypted = self::encrypt($data, $enc_key)) {
+      return \base64_encode($decrypted);
+    }
+    return null;
   }
   public static function decodeDecrypt($data, string $enc_key='') {
     return self::decrypt( \base64_decode($data), $enc_key );
